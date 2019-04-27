@@ -6,11 +6,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { configureStore } from 'redux-starter-kit'
-import rootReducer from './reducers'
+import {fetchMeetups} from './actions'
+import {rootReducer} from './reducers'
 
 const store = configureStore({
   reducer: rootReducer
 })
+
+store.dispatch(fetchMeetups()).then(() => console.log(store.getState()))
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
